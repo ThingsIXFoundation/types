@@ -17,6 +17,7 @@
 package types
 
 import (
+	"crypto/sha256"
 	"time"
 
 	"github.com/ThingsIXFoundation/frequency-plan/go/frequency_plan"
@@ -25,7 +26,9 @@ import (
 
 type MappingRecord struct {
 	DiscoveryReceiptsRecords []*MappingDiscoveryReceiptRecord `json:"discoveryReceiptRecords"`
+	DiscoveryPhy             []byte                           `json:"discoveryPhy"`
 	DownlinkReceiptRecords   []*MappingDownlinkReceiptRecord  `json:"downlinkReceiptRecords"`
+	DownlinkPhy              []byte                           `json:"downlinkPhy"`
 	MeasuredRssi             *int                             `json:"measuredRssi"`
 	MeasuredSnr              *int                             `json:"measuredSnr"`
 	FrequencyPlan            frequency_plan.BandName          `json:"frequencyPlan"`
@@ -44,4 +47,14 @@ type MappingRecord struct {
 	MapperStatus             uint8                            `json:"mapperStatus"`
 	ReceivedTime             time.Time                        `json:"receivedTime"`
 	ServiceValidation        MappingRecordValidation          `json:"serviceValidation"`
+}
+
+// Return the MappingID of this MappingRecord, on the
+func (mr *MappingRecord) MappingID() ID {
+	return mappingID(mr.MapperID, mr.DownlinkPhy)
+}
+
+func mappingID(mapperID ID, phy []byte) ID {
+	h := sha256.Sum256(append(mapperID[:], phy...))
+	return ID(h)
 }

@@ -33,3 +33,8 @@ type MappingDiscoveryReceiptRecord struct {
 	MapperID          ID                      `json:"mapperId,omitempty"`
 	ServiceValidation MappingRecordValidation `json:"serviceValidation"`
 }
+
+// Return the
+func (mdrr *MappingDiscoveryReceiptRecord) MappingID() ID {
+	return mappingID(mdrr.MapperID, mdrr.Phy)
+}
