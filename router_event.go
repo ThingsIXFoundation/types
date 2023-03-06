@@ -19,6 +19,7 @@ package types
 import (
 	"time"
 
+	"github.com/ThingsIXFoundation/frequency-plan/go/frequency_plan"
 	"github.com/ethereum/go-ethereum/common"
 )
 
@@ -31,16 +32,18 @@ type RouterEvent struct {
 	LogIndex         uint           `json:"logIndex"`
 	Time             time.Time      `json:"time"`
 
-	Type        RouterEventType `json:"type"`
-	ID          ID              `json:"id"`
-	Revision    uint16          `json:"revision"`
-	Owner       *common.Address `json:"owner"`
-	NewNetID    uint32          `json:"newNetid"`
-	OldNetID    uint32          `json:"oldNetid"`
-	NewPrefix   uint32          `json:"newPrefix"`
-	OldPrefix   uint32          `json:"oldPrefix"`
-	NewMask     uint8           `json:"newMask"`
-	OldMask     uint8           `json:"oldMask"`
-	NewEndpoint string          `json:"newEndpoint"`
-	OldEndpoint string          `json:"oldEndpoint"`
+	Type             RouterEventType         `json:"type"`
+	ID               ID                      `json:"id"`
+	Revision         uint16                  `json:"revision"`
+	Owner            *common.Address         `json:"owner"`
+	NewNetID         uint32                  `json:"newNetid"`
+	OldNetID         uint32                  `json:"oldNetid"`
+	NewPrefix        uint32                  `json:"newPrefix"`
+	OldPrefix        uint32                  `json:"oldPrefix"`
+	NewMask          uint8                   `json:"newMask"`
+	OldMask          uint8                   `json:"oldMask"`
+	NewFrequencyPlan frequency_plan.BandName `json:"newFrequencyPlan"`
+	OldFrequencyPlan frequency_plan.BandName `json:"oldFrequencyPlan"`
+	NewEndpoint      string                  `json:"newEndpoint"`
+	OldEndpoint      string                  `json:"oldEndpoint"`
 }

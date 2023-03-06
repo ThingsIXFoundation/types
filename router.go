@@ -16,14 +16,18 @@
 
 package types
 
-import "github.com/ethereum/go-ethereum/common"
+import (
+	"github.com/ThingsIXFoundation/frequency-plan/go/frequency_plan"
+	"github.com/ethereum/go-ethereum/common"
+)
 
 type Router struct {
-	ID              ID             `json:"id"`
-	ContractAddress common.Address `json:"contract"`
-	Owner           common.Address `json:"owner"`
-	NetID           uint32         `json:"netid"`
-	Prefix          uint32         `json:"prefix"`
-	Mask            uint8          `json:"mask"`
-	Endpoint        string         `json:"endpoint"`
+	ID              ID                      `json:"id"`
+	ContractAddress common.Address          `json:"contract"`
+	Owner           common.Address          `json:"owner"`
+	NetID           uint32                  `json:"netid"`
+	Prefix          uint32                  `json:"prefix"`
+	Mask            uint8                   `json:"mask"`
+	FrequencyPlan   frequency_plan.BandName `json:"frequencyPlan"`
+	Endpoint        string                  `json:"endpoint"`
 }
