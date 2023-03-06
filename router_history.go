@@ -19,6 +19,7 @@ package types
 import (
 	"time"
 
+	"github.com/ThingsIXFoundation/frequency-plan/go/frequency_plan"
 	"github.com/ethereum/go-ethereum/common"
 )
 
@@ -29,12 +30,13 @@ type RouterHistory struct {
 	BlockNumber     uint64         `json:"blockNumber"`
 	Time            time.Time      `json:"time"`
 
-	ID       ID              `json:"id" gorm:"primaryKey;type:bytea"`
-	Owner    *common.Address `json:"owner"`
-	NetID    uint32          `json:"netid"`
-	Prefix   uint32          `json:"prefix"`
-	Mask     uint8           `json:"mask"`
-	Endpoint string          `json:"endpoint"`
+	ID            ID                      `json:"id" gorm:"primaryKey;type:bytea"`
+	Owner         *common.Address         `json:"owner"`
+	NetID         uint32                  `json:"netid"`
+	Prefix        uint32                  `json:"prefix"`
+	Mask          uint8                   `json:"mask"`
+	FrequencyPlan frequency_plan.BandName `json:"frequencyPlan"`
+	Endpoint      string                  `json:"endpoint"`
 }
 
 func (rh *RouterHistory) Router() *Router {
@@ -45,6 +47,7 @@ func (rh *RouterHistory) Router() *Router {
 		NetID:           rh.NetID,
 		Prefix:          rh.Prefix,
 		Mask:            rh.Mask,
+		FrequencyPlan:   rh.FrequencyPlan,
 		Endpoint:        rh.Endpoint,
 	}
 }

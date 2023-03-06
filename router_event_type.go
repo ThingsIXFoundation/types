@@ -54,6 +54,12 @@ func (event *RouterEventType) UnmarshalText(input []byte) error {
 	case RouterRegisteredEvent:
 		*event = RouterEventType(normalized)
 		return nil
+	case RouterUpdatedEvent:
+		*event = RouterEventType(normalized)
+		return nil
+	case RouterRemovedEvent:
+		*event = RouterEventType(normalized)
+		return nil
 	default:
 		return fmt.Errorf(`invalid event type "%s"`, input)
 	}
