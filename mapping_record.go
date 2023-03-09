@@ -25,29 +25,30 @@ import (
 )
 
 type MappingRecord struct {
-	ID                      ID                               `json:"id"`
-	DiscoveryReceiptRecords []*MappingDiscoveryReceiptRecord `json:"discoveryReceiptRecords"`
-	DiscoveryPhy            []byte                           `json:"discoveryPhy"`
-	DownlinkReceiptRecords  []*MappingDownlinkReceiptRecord  `json:"downlinkReceiptRecords"`
-	DownlinkPhy             []byte                           `json:"downlinkPhy"`
-	MeasuredRssi            *int                             `json:"measuredRssi"`
-	MeasuredSnr             *int                             `json:"measuredSnr"`
-	FrequencyPlan           frequency_plan.BandName          `json:"frequencyPlan"`
-	ChallengedGatewayID     *ID                              `json:"challengedGatewayID"`
-	ChallengedTime          *time.Time                       `json:"challengedTime"`
-	MapperID                ID                               `json:"mapperId"`
-	MapperLocation          h3light.Cell                     `json:"mapperLocation"`
-	MapperLat               float64                          `json:"mapperLat"`
-	MapperLon               float64                          `json:"mapperLon"`
-	MapperHeight            float64                          `json:"mapperHeight"`
-	MapperOsnmaAge          uint8                            `json:"mapperOsnmaAge"`
-	MapperSpoofing          uint8                            `json:"mapperSpoofing"`
-	MapperTow               uint32                           `json:"mapperTow"`
-	MapperBattery           uint8                            `json:"mapperBattery"`
-	MapperVersion           uint8                            `json:"mapperVersion"`
-	MapperStatus            uint8                            `json:"mapperStatus"`
-	ReceivedTime            time.Time                        `json:"receivedTime"`
-	ServiceValidation       MappingRecordValidation          `json:"serviceValidation"`
+	ID                        ID                               `json:"id"`
+	DiscoveryReceiptRecords   []*MappingDiscoveryReceiptRecord `json:"discoveryReceiptRecords"`
+	DiscoveryPhy              []byte                           `json:"discoveryPhy"`
+	DownlinkReceiptRecords    []*MappingDownlinkReceiptRecord  `json:"downlinkReceiptRecords"`
+	DownlinkPhy               []byte                           `json:"downlinkPhy"`
+	MeasuredRssi              *int                             `json:"measuredRssi"`
+	MeasuredSnr               *int                             `json:"measuredSnr"`
+	FrequencyPlan             frequency_plan.BandName          `json:"frequencyPlan"`
+	ChallengedGatewayID       *ID                              `json:"challengedGatewayId"`
+	ChallengedGatewayLocation h3light.Cell                     `json:"challengedGatewayLocation"`
+	ChallengedTime            *time.Time                       `json:"challengedTime"`
+	MapperID                  ID                               `json:"mapperId"`
+	MapperLocation            h3light.Cell                     `json:"mapperLocation"`
+	MapperLat                 float64                          `json:"mapperLat"`
+	MapperLon                 float64                          `json:"mapperLon"`
+	MapperHeight              float64                          `json:"mapperHeight"`
+	MapperOsnmaAge            uint8                            `json:"mapperOsnmaAge"`
+	MapperSpoofing            uint8                            `json:"mapperSpoofing"`
+	MapperTow                 uint32                           `json:"mapperTow"`
+	MapperBattery             uint8                            `json:"mapperBattery"`
+	MapperVersion             uint8                            `json:"mapperVersion"`
+	MapperStatus              uint8                            `json:"mapperStatus"`
+	ReceivedTime              time.Time                        `json:"receivedTime"`
+	ServiceValidation         MappingRecordValidation          `json:"serviceValidation"`
 }
 
 // Return the MappingID of this MappingRecord, on the

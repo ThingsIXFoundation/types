@@ -16,7 +16,11 @@
 
 package types
 
-import "time"
+import (
+	"time"
+
+	h3light "github.com/ThingsIXFoundation/h3-light"
+)
 
 type MappingDownlinkReceiptRecord struct {
 	Frequency         uint32                  `json:"frequency,omitempty"`
@@ -30,6 +34,7 @@ type MappingDownlinkReceiptRecord struct {
 	GatewayTime       time.Time               `json:"gatewayTime,omitempty"`
 	GatewaySignature  []byte                  `json:"gatewaySignature,omitempty"`
 	GatewayID         ID                      `json:"gatewayId,omitempty"`
+	GatewayLocation   *h3light.Cell           `json:"gatewayLocation,omitempty"`
 	MapperID          ID                      `json:"mapperId,omitempty"`
 	ServiceValidation MappingRecordValidation `json:"serviceValidation"`
 }

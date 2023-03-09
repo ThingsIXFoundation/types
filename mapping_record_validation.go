@@ -78,4 +78,7 @@ const (
 
 	// The OSNMA validation by the mapper was not sufficient
 	MappingRecordValidationInsufficientGpsSecurity MappingRecordValidation = "insufficient-gps-security"
+
+	// An internal server error occcured during validation
+	MappingRecordValidationInternalServerError MappingRecordValidation = "internal-server-error"
 )
