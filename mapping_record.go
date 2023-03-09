@@ -34,7 +34,7 @@ type MappingRecord struct {
 	MeasuredSnr               *int                             `json:"measuredSnr"`
 	FrequencyPlan             frequency_plan.BandName          `json:"frequencyPlan"`
 	ChallengedGatewayID       *ID                              `json:"challengedGatewayId"`
-	ChallengedGatewayLocation h3light.Cell                     `json:"challengedGatewayLocation"`
+	ChallengedGatewayLocation *h3light.Cell                    `json:"challengedGatewayLocation"`
 	ChallengedTime            *time.Time                       `json:"challengedTime"`
 	MapperID                  ID                               `json:"mapperId"`
 	MapperLocation            h3light.Cell                     `json:"mapperLocation"`
