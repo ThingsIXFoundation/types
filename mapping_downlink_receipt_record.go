@@ -21,7 +21,7 @@ import "time"
 type MappingDownlinkReceiptRecord struct {
 	Frequency         uint32                  `json:"frequency,omitempty"`
 	Rssi              int32                   `json:"rssi,omitempty"`
-	LoraSnr           float64                 `json:"loraSnr,omitempty"`
+	Snr               float64                 `json:"snr,omitempty"`
 	SpreadingFactor   uint32                  `json:"spreadingFactor,omitempty"`
 	Bandwidth         uint32                  `json:"bandwidth,omitempty"`
 	CodeRate          string                  `json:"codeRate,omitempty"`
