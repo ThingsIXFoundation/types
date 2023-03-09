@@ -25,6 +25,7 @@ import (
 )
 
 type MappingRecord struct {
+	ID                       ID                               `json:"id"`
 	DiscoveryReceiptsRecords []*MappingDiscoveryReceiptRecord `json:"discoveryReceiptRecords"`
 	DiscoveryPhy             []byte                           `json:"discoveryPhy"`
 	DownlinkReceiptRecords   []*MappingDownlinkReceiptRecord  `json:"downlinkReceiptRecords"`
