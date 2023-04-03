@@ -3,6 +3,7 @@ package types
 import (
 	"time"
 
+	"github.com/ThingsIXFoundation/frequency-plan/go/frequency_plan"
 	h3light "github.com/ThingsIXFoundation/h3-light"
 )
 
@@ -15,6 +16,12 @@ type CoverageHistory struct {
 	Date time.Time `json:"date"`
 	// ID of the gateway that provides this coverage
 	GatewayID ID `json:"gatewayId"`
+
+	// The location of the gateway that provides this coverage
+	GatewayLocation h3light.Cell `json:"gatewayLocation"`
+
+	// The frequency plan that coverage is provided for
+	FrequencyPlan frequency_plan.BandName `json:"frequencyPlan"`
 
 	// ID of the mapper that mapped this coverage
 	MapperID ID `json:"mapperId"`
