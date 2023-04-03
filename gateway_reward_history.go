@@ -15,7 +15,7 @@ type GatewayRewardHistory struct {
 	Date time.Time `json:"date"`
 
 	// The total amount of Coverage Share Units this gateway has a the date.
-	AssumedCoverageShareUnits uint64 `json:"assumedCoverageUnits"`
+	AssumedCoverageShareUnits *big.Int `json:"assumedCoverageUnits"`
 
 	// The reward in THIX "gweis" for this gateway
 	Rewards *big.Int `json:"rewards"`

@@ -15,7 +15,7 @@ type MapperRewardHistory struct {
 	Date time.Time `json:"date"`
 
 	// The total amount of MappingUnits the mapper got rewards for
-	MappingUnits uint64 `json:"mappingUnits"`
+	MappingUnits *big.Int `json:"mappingUnits"`
 
 	// The reward in THIX "gweis" for this mapper
 	Rewards *big.Int `json:"rewards"`
