@@ -46,12 +46,20 @@ type AccountRewardHistory struct {
 }
 
 func (arh AccountRewardHistory) MarshalJSON() ([]byte, error) {
-	return json.Marshal(map[string]interface{}{
-		"account":      arh.Account,
-		"date":         arh.Date,
-		"rewards":      "0x" + arh.Rewards.Text(16),
-		"totalRewards": "0x" + arh.TotalRewards.Text(16),
-		"processor":    arh.Processor,
-		"signature":    arh.Signature,
-	})
+	jsm := map[string]interface{}{
+		"account":   arh.Account,
+		"date":      arh.Date,
+		"processor": arh.Processor,
+		"signature": arh.Signature,
+	}
+
+	if arh.Rewards != nil {
+		jsm["rewards"] = "0x" + arh.Rewards.Text(16)
+	}
+
+	if arh.TotalRewards != nil {
+		jsm["totalRewards"] = "0x" + arh.TotalRewards.Text(16)
+	}
+
+	return json.Marshal(jsm)
 }
