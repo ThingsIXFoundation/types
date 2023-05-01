@@ -17,6 +17,7 @@
 package types
 
 import (
+	"encoding/json"
 	"math/big"
 	"time"
 
@@ -42,4 +43,15 @@ type AccountRewardHistory struct {
 
 	// Date these rewards where issued
 	Date time.Time `json:"date"`
+}
+
+func (arh AccountRewardHistory) MarshalJSON() ([]byte, error) {
+	return json.Marshal(map[string]interface{}{
+		"account":      arh.Account,
+		"date":         arh.Date,
+		"rewards":      "0x" + arh.Rewards.Text(16),
+		"totalRewards": "0x" + arh.TotalRewards.Text(16),
+		"processor":    arh.Processor,
+		"signature":    arh.Signature,
+	})
 }
