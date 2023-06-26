@@ -45,6 +45,9 @@ type CoverageHistory struct {
 	// ID of the mapping record that was used to base this coverage on
 	MappingID ID `json:"mappingId"`
 
+	// Date of the mapping record that was used to base this coverage on
+	MappingDate time.Time `json:"mappingDate"`
+
 	// The RSSI (signal strength) of coverage at this location
 	RSSI int `json:"rssi"`
 }
