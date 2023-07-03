@@ -20,9 +20,11 @@ import (
 	"time"
 
 	h3light "github.com/ThingsIXFoundation/h3-light"
+	"github.com/google/uuid"
 )
 
 type UnverifiedMappingRecord struct {
+	MappingID      uuid.UUID                         `json:"id"`
 	GatewayRecords []*UnverifiedMappingGatewayRecord `json:"gatewayRecords"`
 	MapperID       string                            `json:"mapperId"`
 	MapperLocation h3light.Cell                      `json:"mapperLocation"`
@@ -34,12 +36,14 @@ type UnverifiedMappingRecord struct {
 }
 
 type UnverifiedMappingGatewayRecord struct {
-	GatewayTime     time.Time `json:"gatewayTime,omitempty"`
-	GatewayID       ID        `json:"gatewayId,omitempty"`
-	Frequency       uint32    `json:"frequency,omitempty"`
-	Rssi            int32     `json:"rssi,omitempty"`
-	Snr             float64   `json:"snr,omitempty"`
-	SpreadingFactor uint32    `json:"spreadingFactor,omitempty"`
-	Bandwidth       uint32    `json:"bandwidth,omitempty"`
-	CodeRate        string    `json:"codeRate,omitempty"`
+	MappingID       uuid.UUID     `json:"mappingId"`
+	GatewayID       ID            `json:"gatewayId,omitempty"`
+	GatewayLocation *h3light.Cell `json:"gatewayLocation,omitempty"`
+	GatewayTime     time.Time     `json:"gatewayTime,omitempty"`
+	Frequency       uint32        `json:"frequency,omitempty"`
+	Rssi            int32         `json:"rssi,omitempty"`
+	Snr             float64       `json:"snr,omitempty"`
+	SpreadingFactor uint32        `json:"spreadingFactor,omitempty"`
+	Bandwidth       uint32        `json:"bandwidth,omitempty"`
+	CodeRate        string        `json:"codeRate,omitempty"`
 }
