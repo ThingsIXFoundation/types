@@ -24,15 +24,21 @@ import (
 )
 
 type UnverifiedMappingRecord struct {
-	MappingID      uuid.UUID                         `json:"id"`
-	GatewayRecords []*UnverifiedMappingGatewayRecord `json:"gatewayRecords"`
-	MapperID       string                            `json:"mapperId"`
-	MapperLocation h3light.Cell                      `json:"mapperLocation"`
-	MapperLat      float64                           `json:"mapperLat"`
-	MapperLon      float64                           `json:"mapperLon"`
-	MapperAccuracy float64                           `json:"mapperAccuracy"`
-	MapperHeight   float64                           `json:"mapperHeight"`
-	ReceivedTime   time.Time                         `json:"receivedTime"`
+	MappingID           uuid.UUID                         `json:"id"`
+	GatewayRecords      []*UnverifiedMappingGatewayRecord `json:"gatewayRecords"`
+	MapperID            string                            `json:"mapperId"`
+	BestGatewayID       *ID                               `json:"bestGatewayId"`
+	BestGatewayLocation *h3light.Cell                     `json:"bestGatewayLocation"`
+	MapperLocation      h3light.Cell                      `json:"mapperLocation"`
+	MapperLat           float64                           `json:"mapperLat"`
+	MapperLon           float64                           `json:"mapperLon"`
+	MapperAccuracy      float64                           `json:"mapperAccuracy"`
+	MapperHeight        float64                           `json:"mapperHeight"`
+	ReceivedTime        time.Time                         `json:"receivedTime"`
+	Frequency           uint32                            `json:"frequency,omitempty"`
+	SpreadingFactor     uint32                            `json:"spreadingFactor,omitempty"`
+	Bandwidth           uint32                            `json:"bandwidth,omitempty"`
+	CodeRate            string                            `json:"codeRate,omitempty"`
 }
 
 type UnverifiedMappingGatewayRecord struct {
@@ -40,10 +46,6 @@ type UnverifiedMappingGatewayRecord struct {
 	GatewayID       ID            `json:"gatewayId,omitempty"`
 	GatewayLocation *h3light.Cell `json:"gatewayLocation,omitempty"`
 	GatewayTime     time.Time     `json:"gatewayTime,omitempty"`
-	Frequency       uint32        `json:"frequency,omitempty"`
 	Rssi            int32         `json:"rssi,omitempty"`
 	Snr             float64       `json:"snr,omitempty"`
-	SpreadingFactor uint32        `json:"spreadingFactor,omitempty"`
-	Bandwidth       uint32        `json:"bandwidth,omitempty"`
-	CodeRate        string        `json:"codeRate,omitempty"`
 }
