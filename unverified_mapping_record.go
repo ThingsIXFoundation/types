@@ -28,8 +28,8 @@ type UnverifiedMappingRecord struct {
 	MapperID            string                            `json:"mapperId"`
 	BestGatewayID       *ID                               `json:"bestGatewayId"`
 	BestGatewayLocation *h3light.Cell                     `json:"bestGatewayLocation"`
-	BestGatewayRssi     int32                             `json:"bestGatewayRssi"`
-	BestGatewaySnr      float64                           `json:"bestGatewaySnr"`
+	BestGatewayRssi     *int32                            `json:"bestGatewayRssi"`
+	BestGatewaySnr      *float64                          `json:"bestGatewaySnr"`
 	MapperLocation      h3light.Cell                      `json:"mapperLocation"`
 	MapperLat           float64                           `json:"mapperLat"`
 	MapperLon           float64                           `json:"mapperLon"`
