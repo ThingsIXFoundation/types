@@ -20,15 +20,16 @@ import (
 	"time"
 
 	h3light "github.com/ThingsIXFoundation/h3-light"
-	"github.com/google/uuid"
 )
 
 type UnverifiedMappingRecord struct {
-	MappingID           uuid.UUID                         `json:"id"`
+	ID                  ID                                `json:"id"`
 	GatewayRecords      []*UnverifiedMappingGatewayRecord `json:"gatewayRecords"`
 	MapperID            string                            `json:"mapperId"`
 	BestGatewayID       *ID                               `json:"bestGatewayId"`
 	BestGatewayLocation *h3light.Cell                     `json:"bestGatewayLocation"`
+	BestGatewayRssi     int32                             `json:"bestGatewayRssi"`
+	BestGatewaySnr      float64                           `json:"bestGatewaySnr"`
 	MapperLocation      h3light.Cell                      `json:"mapperLocation"`
 	MapperLat           float64                           `json:"mapperLat"`
 	MapperLon           float64                           `json:"mapperLon"`
@@ -42,7 +43,7 @@ type UnverifiedMappingRecord struct {
 }
 
 type UnverifiedMappingGatewayRecord struct {
-	MappingID       uuid.UUID     `json:"mappingId"`
+	MappingID       ID            `json:"mappingId"`
 	GatewayID       ID            `json:"gatewayId,omitempty"`
 	GatewayLocation *h3light.Cell `json:"gatewayLocation,omitempty"`
 	GatewayTime     time.Time     `json:"gatewayTime,omitempty"`

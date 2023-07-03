@@ -17,6 +17,7 @@
 package types
 
 import (
+	"crypto/rand"
 	"encoding/hex"
 	"fmt"
 )
@@ -65,5 +66,12 @@ func IDFromPublicKeyBytes(publicKeyBytes []byte) ID {
 func IDFromBytes(b []byte) ID {
 	id := ID{}
 	_ = copy(id[:], b[0:32])
+	return id
+}
+
+func IDFromRandom() ID {
+	id := ID{}
+	rand.Read(id[:])
+
 	return id
 }
