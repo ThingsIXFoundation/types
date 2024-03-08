@@ -19,6 +19,7 @@ package types
 import (
 	"database/sql/driver"
 	"fmt"
+	"reflect"
 	"strings"
 )
 
@@ -36,8 +37,15 @@ const (
 )
 
 func (event *RouterEventType) Scan(value interface{}) error {
-	*event = RouterEventType(value.([]byte))
-	return nil
+	if str, ok := value.(string); ok {
+		*event = RouterEventType(str)
+		return nil
+	}
+	if b, ok := value.([]byte); ok {
+		*event = RouterEventType(b)
+		return nil
+	}
+	return fmt.Errorf("unsupported type: %v", reflect.TypeOf(value))
 }
 
 func (event RouterEventType) Value() (driver.Value, error) {
@@ -51,13 +59,7 @@ func (event RouterEventType) MarshalText() ([]byte, error) {
 func (event *RouterEventType) UnmarshalText(input []byte) error {
 	normalized := strings.ToLower(string(input))
 	switch RouterEventType(normalized) {
-	case RouterRegisteredEvent:
-		*event = RouterEventType(normalized)
-		return nil
-	case RouterUpdatedEvent:
-		*event = RouterEventType(normalized)
-		return nil
-	case RouterRemovedEvent:
+	case RouterRegisteredEvent, RouterUpdatedEvent, RouterRemovedEvent:
 		*event = RouterEventType(normalized)
 		return nil
 	default:
